@@ -268,6 +268,18 @@ function App() {
           }
         </Highlight>
         <p>
+          view calamari service logs (see: <a href="https://www.digitalocean.com/community/tutorials/how-to-use-journalctl-to-view-and-manipulate-systemd-logs">how-to-use-journalctl</a>):
+        </p>
+        <Highlight className="language-bash">
+          {
+            [
+              `#!/bin/bash`,
+              `journalctl -u calamari.service --since today`
+            ].join('\n')
+          }
+        </Highlight>
+        
+        <p>
           debug calamari service configuration (run calamari as the manta user, to quickly check for runtime errors):
         </p>
         <Highlight className="language-bash">
