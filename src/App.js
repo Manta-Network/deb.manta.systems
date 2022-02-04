@@ -35,7 +35,7 @@ function App() {
         <h3>apt (.deb) packages built on and for ubuntu focal (20.04) amd64/x86_64</h3>
       </Row>
       <Row>
-        <Tabs defaultActiveKey="packages" className="mb-3">
+        <Tabs defaultActiveKey="tldr" className="mb-3">
           <Tab eventKey="repo" title="add the repo">
             <h4>add this repository to your apt sources</h4>
             <p>
@@ -295,6 +295,22 @@ function App() {
                 [
                   `#!/bin/bash`,
                   `sudo -H -u manta bash -c '/usr/bin/calamari --chain /usr/share/substrate/calamari.json --base-path /var/lib/substrate --port 31333 --ws-port 9144 --ws-max-connections 100 --rpc-port 9133 --rpc-cors all --rpc-methods safe --state-cache-size 0 --bootnodes /dns/crispy.calamari.systems/tcp/30333/p2p/12D3KooWNE4LBfkYB2B7D4r9vL54YMMGsfAsXdkhWfBw8VHJSEQc /dns/crunchy.calamari.systems/tcp/30333/p2p/12D3KooWL3ELxcoMGA6han3wPQoym5DKbYHqkWkCuqyjaCXpyJTt /dns/hotdog.calamari.systems/tcp/30333/p2p/12D3KooWBdto53HnArmLdtf2RXzNWti7hD5mML7DWGZPD8q4cywv /dns/tasty.calamari.systems/tcp/30333/p2p/12D3KooWGs2hfnRQ3Y2eAoUyWKUL3g7Jmcsf8FpyhVYeNpXeBMSu /dns/tender.calamari.systems/tcp/30333/p2p/12D3KooWNXZeUSEKRPsp1yiDH99qSVawQSWHqG4umPjgHsn1joci -- --chain /usr/share/substrate/kusama.json'`
+                ].join('\n')
+              }
+            </Highlight>
+          </Tab>
+          <Tab eventKey="tldr" title="tl;dr">
+            <h4>install and start a calamari node on ubuntu as quickly as possible</h4>
+            <Highlight className="language-bash">
+              {
+                [
+                  `#!/bin/bash`,
+                  `sudo curl -o /usr/share/keyrings/manta.gpg https://deb.manta.systems/manta.gpg`,
+                  `sudo curl -o /etc/apt/sources.list.d/manta.list https://deb.manta.systems/manta.list`,
+                  `sudo apt update`,
+                  `sudo apt install manta -y`,
+                  `sudo systemctl enable --now calamari.service`,
+                  `journalctl -u calamari.service -f`
                 ].join('\n')
               }
             </Highlight>
