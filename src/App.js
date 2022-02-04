@@ -77,6 +77,8 @@ function App() {
             ].join('\n')
           }
         </Highlight>
+      </Row>
+      <Row style={{padding: '1em'}}>
         <h4>install, update or remove the manta node binary and the manta and calamari systemd services</h4>
         <p>
           manta .deb packages include:
@@ -211,6 +213,8 @@ function App() {
             ].join('\n')
           }
         </Highlight>
+      </Row>
+      <Row style={{padding: '1em'}}>
         <h4>check, enable and start manta/calamari service(s)</h4>
         <p>
           check the status of the calamari service:
@@ -268,17 +272,16 @@ function App() {
           }
         </Highlight>
         <p>
-          view calamari service logs (see: <a href="https://www.digitalocean.com/community/tutorials/how-to-use-journalctl-to-view-and-manipulate-systemd-logs">how-to-use-journalctl</a>):
+          tail the calamari service logs:
         </p>
         <Highlight className="language-bash">
           {
             [
               `#!/bin/bash`,
-              `journalctl -u calamari.service --since today`
+              `journalctl -u calamari.service -f`
             ].join('\n')
           }
         </Highlight>
-        
         <p>
           debug calamari service configuration (run calamari as the manta user, to quickly check for runtime errors):
         </p>
