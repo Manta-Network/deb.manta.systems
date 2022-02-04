@@ -101,11 +101,17 @@ function App() {
                 <ul>
                   <li>
                     <code>/usr/lib/systemd/system/manta.service</code>
-                    <span className="text-muted">: manta systemd unit file</span>
+                    <span className="text-muted">
+                      : manta systemd unit file
+                      (source: <a href="https://github.com/Manta-Network/Manta/blob/deb-rpm/scripts/package/manta.service">github/Manta-Network/Manta/manta.service</a>)
+                    </span>
                   </li>
                   <li>
                     <code>/usr/lib/systemd/system/calamari.service</code>
-                    <span className="text-muted">: calamari systemd unit file</span>
+                    <span className="text-muted">
+                      : calamari systemd unit file
+                      (source: <a href="https://github.com/Manta-Network/Manta/blob/deb-rpm/scripts/package/calamari.service">github/Manta-Network/Manta/calamari.service</a>)
+                    </span>
                   </li>
                 </ul>
               </li>
