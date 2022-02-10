@@ -299,6 +299,49 @@ function App() {
               }
             </Highlight>
           </Tab>
+          <Tab eventKey="fast-sync" title="fast sync">
+            <h4>download blockchain database snapshots</h4>
+            <p>
+              syncing a parachain node in the recommended way, by running a parachain node, can take a very long time because both the parachain and relay-chain databases need to be synced over the peer-to-peer, decentralised network.
+              it is not uncommon for a full kusama relay-chain sync to require between one and two weeks to complete.
+            </p>
+            <p>
+              to sync your node quickly, you may be able to use manta inc. snapshots hosted on amazon s3.
+              this facility may be removed or suspended at any time and there is no guarantee of the availability of snapshots.
+            </p>
+            <p>
+              the shell commands below assume the basepath to be in the default location: <code>/var/lib/substrate</code>. it is also assumed that the basepath is owned by the <code>manta</code> user.
+              the download of the blockchain database archive is piped through <code>tar</code> for extraction in order to reduce the amount of disk space that would be required to hold both the archive (.tar.gz) file and the extracted database files.
+            </p>
+            <h5>calamari database</h5>
+            <Highlight className="language-bash">
+              {
+                [
+                  `#!/bin/bash`,
+                  `# delete calamari blockchain database folder`,
+                  `sudo -H -u manta rm -rf /var/lib/substrate/chains/calamari/db/full`,
+                  `# create calamari blockchain database folder`,
+                  `sudo -H -u manta mkdir -p /var/lib/substrate/chains/calamari/db/full`,
+                  `# download and extract calamari blockchain database folder`,
+                  `curl https://calamari-kusama.s3.amazonaws.com/calamari.tar.gz | sudo -H -u manta tar -xzC /var/lib/substrate/chains/calamari/db/full`
+                ].join('\n')
+              }
+            </Highlight>
+            <h5>kusama database</h5>
+            <Highlight className="language-bash">
+              {
+                [
+                  `#!/bin/bash`,
+                  `# delete kusama blockchain database folder`,
+                  `sudo -H -u manta rm -rf /var/lib/substrate/polkadot/chains/ksmcc3/db/full`,
+                  `# create kusama blockchain database folder`,
+                  `sudo -H -u manta mkdir -p /var/lib/substrate/polkadot/chains/ksmcc3/db/full`,
+                  `# download and extract kusama blockchain database folder`,
+                  `curl https://calamari-kusama.s3.amazonaws.com/kusama.tar.gz | sudo -H -u manta tar -xzC /var/lib/substrate/polkadot/chains/ksmcc3/db/full`
+                ].join('\n')
+              }
+            </Highlight>
+          </Tab>
           <Tab eventKey="tldr" title="tl;dr">
             <h4>install and start a calamari node on ubuntu as quickly as possible</h4>
             <Highlight className="language-bash">
