@@ -302,7 +302,7 @@ function App() {
           <Tab eventKey="fast-sync" title="fast sync">
             <h4>download blockchain database snapshots</h4>
             <p>
-              syncing a parachain node in the recommended way, by running a parachain node, can take a very long time because both the parachain and relay-chain databases need to be synced over the peer-to-peer, decentralised network.
+              syncing a parachain database in the recommended way, by running a parachain node, can take a very long time because both the parachain and relay-chain databases need to be synced over the peer-to-peer, decentralised network.
               it is not uncommon for a full kusama relay-chain sync to require between one and two weeks to complete.
             </p>
             <p>
